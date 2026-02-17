@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hazel Dehn-Shimniok | Horror & Thriller Author</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blood-red: #8B0000;
+            --accent-red: #DC143C;
+            --deep-black: #0a0a0a;
+            --charcoal: #1a1a1a;
+            --ash-gray: #2a2a2a;
+            --bone-white: #f5f5f5;
+            --shadow-red: rgba(220, 20, 60, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: var(--deep-black);
+            color: var(--bone-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Atmospheric background effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, var(--shadow-red) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, var(--shadow-red) 0%, transparent 50%);
+            opacity: 0.4;
+            z-index: -1;
+            animation: pulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.5; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid var(--ash-gray);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: var(--bone-white);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-red);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-red);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+        }
+
+        .house-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 900px;
+            height: 90%;
+            max-height: 700px;
+            opacity: 0.12;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .house-svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 50px var(--accent-red));
+        }
+
+        .house-svg path,
+        .house-svg rect,
+        .house-svg polygon {
+            fill: var(--accent-red);
+            stroke: var(--accent-red);
+            stroke-width: 2;
+        }
+
+        .house-svg .shadow {
+            fill: var(--blood-red);
+            opacity: 0.6;
+        }
+
+        .house-svg .dark-side {
+            fill: var(--blood-red);
+            opacity: 0.8;
+        }
+
+        .house-svg .light-side {
+            fill: var(--accent-red);
+            opacity: 1;
+        }
+
+        .house-svg .window {
+            fill: var(--deep-black);
+            animation: windowFlicker 5s ease-in-out infinite;
+        }
+
+        @keyframes windowFlicker {
+            0%, 100% { opacity: 0.8; }
+            25% { opacity: 1; }
+            50% { opacity: 0.6; }
+            75% { opacity: 0.9; }
+        }
+
+        .house-svg .ghost {
+            fill: var(--bone-white);
+            opacity: 0.4;
+            animation: ghostFade 6s ease-in-out infinite;
+        }
+
+        @keyframes ghostFade {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .house-svg .woman-silhouette {
+            fill: var(--accent-red);
+            stroke: var(--deep-black);
+            stroke-width: 3.5;
+            opacity: 1;
+        }
+        
+        .house-svg .woman-silhouette path,
+        .house-svg .woman-silhouette line {
+            stroke: var(--deep-black);
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            letter-spacing: 8px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease-out;
+            text-shadow: 0 0 30px var(--shadow-red);
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: var(--accent-red);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero .tagline {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            max-width: 600px;
+            font-style: italic;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styling */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            letter-spacing: 6px;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-red), transparent);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+            align-items: start;
+        }
+
+        .author-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            background: var(--charcoal);
+            border: 3px solid var(--accent-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 2rem;
+            color: var(--ash-gray);
+            box-shadow: 0 0 40px var(--shadow-red);
+        }
+
+        .bio {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .bio p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Books Section */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .book-card {
+            background: var(--charcoal);
+            border: 2px solid var(--ash-gray);
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--shadow-red) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .book-card:hover {
+            border-color: var(--accent-red);
+            box-shadow: 0 0 30px var(--shadow-red);
+            transform: translateY(-5px);
+        }
+
+        .book-card:hover::before {
+            opacity: 1;
+        }
+
+        .book-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .book-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+            color: var(--accent-red);
+        }
+
+        .book-meta {
+            font-size: 0.95rem;
+            color: #999;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .book-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 3rem auto;
+        }
+
+        .contact-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-email {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: var(--accent-red);
+            text-decoration: none;
+            display: inline-block;
+            padding: 1rem 2rem;
+            border: 2px solid var(--accent-red);
+            transition: all 0.3s ease;
+        }
+
+        .contact-email:hover {
+            background: var(--accent-red);
+            color: var(--deep-black);
+            box-shadow: 0 0 30px var(--shadow-red);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--ash-gray);
+            margin-top: 4rem;
+            font-size: 0.95rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            nav a {
+                font-size: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .author-photo {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#books">Books</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="house-container">
+            <svg class="house-svg" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                <!-- Stars scattered in sky -->
+                <circle cx="380" cy="50" r="1.5" fill="var(--bone-white)" opacity="0.7"/>
+                <circle cx="450" cy="120" r="1" fill="var(--bone-white)" opacity="0.6"/>
+                <circle cx="350" cy="90" r="1.5" fill="var(--bone-white)" opacity="0.8"/>
+                <circle cx="410" cy="140" r="1" fill="var(--bone-white)" opacity="0.5"/>
+                <circle cx="470" cy="70" r="1.5" fill="var(--bone-white)" opacity="0.7"/>
+                <circle cx="320" cy="60" r="1" fill="var(--bone-white)" opacity="0.6"/>
+                <circle cx="390" cy="110" r="1.5" fill="var(--bone-white)" opacity="0.8"/>
+                <circle cx="440" cy="90" r="1" fill="var(--bone-white)" opacity="0.5"/>
+                <circle cx="360" cy="130" r="1" fill="var(--bone-white)" opacity="0.6"/>
+                <circle cx="480" cy="100" r="1.5" fill="var(--bone-white)" opacity="0.7"/>
+                <circle cx="340" cy="70" r="1" fill="var(--bone-white)" opacity="0.5"/>
+                <circle cx="460" cy="55" r="1" fill="var(--bone-white)" opacity="0.6"/>
+                
+                <!-- Moon in background -->
+                <circle cx="420" cy="80" r="35" fill="var(--bone-white)" opacity="0.3"/>
+                <circle cx="420" cy="80" r="35" fill="none" stroke="var(--bone-white)" stroke-width="1" opacity="0.5"/>
+                <!-- Moon glow -->
+                <circle cx="420" cy="80" r="45" fill="var(--bone-white)" opacity="0.1"/>
+                
+                <!-- Distant moors/hills -->
+                <ellipse cx="100" cy="340" rx="120" ry="30" fill="var(--blood-red)" opacity="0.15"/>
+                <ellipse cx="250" cy="345" rx="150" ry="25" fill="var(--blood-red)" opacity="0.12"/>
+                <ellipse cx="400" cy="338" rx="130" ry="28" fill="var(--blood-red)" opacity="0.15"/>
+                
+                <!-- Misty moor layers -->
+                <path d="M 0,330 Q 50,320 100,325 Q 150,330 200,322 Q 250,315 300,320 Q 350,325 400,318 Q 450,310 500,315 L 500,350 L 0,350 Z" 
+                      fill="var(--blood-red)" opacity="0.08"/>
+                <path d="M 0,340 Q 60,335 120,340 Q 180,345 240,338 Q 300,332 360,337 Q 420,342 500,335 L 500,350 L 0,350 Z" 
+                      fill="var(--blood-red)" opacity="0.1"/>
+                
+                <!-- Ground shadows (cast by structures) -->
+                <ellipse cx="250" cy="360" rx="180" ry="20" class="shadow"/>
+                <ellipse cx="90" cy="355" rx="60" ry="12" class="shadow"/>
+                <ellipse cx="400" cy="358" rx="50" ry="15" class="shadow"/>
+                
+                <!-- Left wing - DARK SIDE (left face) -->
+                <polygon points="50,230 50,350 98,350 98,190" class="dark-side"/>
+                
+                <!-- Left wing - FRONT FACE -->
+                <polygon points="98,190 128,230 130,350 98,350" class="light-side"/>
+                
+                <!-- Left wing roof shadow -->
+                <polygon points="50,230 98,190 128,230" class="shadow"/>
+                
+                <!-- Stairs connecting left wing to main house -->
+                <!-- Step 1 (bottom) -->
+                <rect x="130" y="220" width="15" height="10" class="light-side" stroke-width="2"/>
+                <polygon points="130,220 132,218 147,218 145,220" class="shadow"/>
+                
+                <!-- Step 2 -->
+                <rect x="145" y="210" width="15" height="10" class="light-side" stroke-width="2"/>
+                <polygon points="145,210 147,208 162,208 160,210" class="shadow"/>
+                
+                <!-- Step 3 -->
+                <rect x="160" y="200" width="15" height="10" class="light-side" stroke-width="2"/>
+                <polygon points="160,200 162,198 177,198 175,200" class="shadow"/>
+                
+                <!-- Step 4 (top, connects to main house) -->
+                <rect x="175" y="190" width="15" height="10" class="light-side" stroke-width="2"/>
+                <polygon points="175,190 177,188 192,188 190,190" class="shadow"/>
+                
+                <!-- Stair side edge -->
+                <polygon points="130,230 145,220 160,210 175,200 190,190 190,350 130,350" class="dark-side"/>
+                
+                <!-- Main house - DARK SIDE (left face) -->
+                <polygon points="98,152 98,350 140,350 140,180 180,150" class="dark-side"/>
+                
+                <!-- Main house - FRONT FACE -->
+                <polygon points="180,150 402,152 402,350 140,350 140,180" class="light-side"/>
+                
+                <!-- Right tower - FRONT FACE -->
+                <polygon points="372,120 368,350 432,350 428,120" class="light-side"/>
+                
+                <!-- Right tower - DARK SIDE (right edge visible) -->
+                <polygon points="428,120 432,120 432,350 428,350" class="dark-side"/>
+                
+                <!-- Tower roof - 3D -->
+                <polygon points="400,85 368,120 432,120" class="light-side"/>
+                <polygon points="400,85 432,120 435,118" class="dark-side"/>
+                
+                <!-- Main roof - LEFT SIDE (darker) -->
+                <polygon points="250,50 98,152 180,150" class="dark-side"/>
+                
+                <!-- Main roof - RIGHT SIDE (lighter) -->
+                <polygon points="250,50 180,150 402,152" class="light-side"/>
+                
+                <!-- Roof edge detail -->
+                <line x1="250" y1="50" x2="250" y2="55" stroke-width="3" opacity="0.8"/>
+                
+                <!-- Chimney - 3D -->
+                <polygon points="160,70 180,70 182,120 158,120" class="light-side"/>
+                <polygon points="158,120 182,120 184,122 156,122" class="shadow"/>
+                
+                <!-- Chimney damage -->
+                <path d="M 165,75 L 170,85 M 175,78 L 172,88" stroke-width="1.5" opacity="0.7" fill="none"/>
+                
+                <!-- Cracks with depth -->
+                <path d="M 180,150 L 185,200 L 180,250" stroke-width="2" opacity="0.9" fill="none"/>
+                <path d="M 181,150 L 186,200 L 181,250" stroke-width="1" opacity="0.4" fill="none"/>
+                
+                <path d="M 320,160 L 315,220 L 320,280" stroke-width="2" opacity="0.9" fill="none"/>
+                <path d="M 319,160 L 314,220 L 319,280" stroke-width="1" opacity="0.4" fill="none"/>
+                
+                <path d="M 150,200 L 180,205 L 160,240" stroke-width="1.5" opacity="0.7" fill="none"/>
+                
+                <!-- Front entrance - 3D door frame -->
+                <polygon points="218,270 220,272 220,350 218,350" class="shadow"/>
+                <polygon points="280,272 282,270 282,350 280,350" class="shadow"/>
+                <rect x="220" y="270" width="60" height="80" fill="none" stroke-width="2.5"/>
+                
+                <!-- Boarded window with shadow -->
+                <rect x="135" y="180" width="40" height="40" class="shadow" opacity="0.4"/>
+                <line x1="135" y1="180" x2="175" y2="220" stroke-width="4" opacity="0.9"/>
+                <line x1="136" y1="180" x2="176" y2="220" stroke-width="2" opacity="0.5"/>
+                <line x1="175" y1="180" x2="135" y2="220" stroke-width="4" opacity="0.9"/>
+                <line x1="176" y1="180" x2="136" y2="220" stroke-width="2" opacity="0.5"/>
+                
+                <!-- Left wing windows with depth -->
+                <rect x="68" y="218" width="22" height="27" class="shadow" opacity="0.3"/>
+                <rect x="70" y="220" width="20" height="25" class="window"/>
+                <path d="M 70,232 L 90,232" stroke-width="1" opacity="0.9"/>
+                
+                <rect x="93" y="218" width="22" height="27" class="shadow" opacity="0.3"/>
+                <rect x="95" y="220" width="20" height="25" class="window"/>
+                <line x1="95" y1="220" x2="115" y2="245" stroke-width="2" opacity="0.7"/>
+                
+                <rect x="68" y="258" width="22" height="27" class="shadow" opacity="0.3"/>
+                <rect x="70" y="260" width="20" height="25" class="window"/>
+                
+                <rect x="93" y="258" width="22" height="27" class="shadow" opacity="0.3"/>
+                <rect x="95" y="260" width="20" height="25" class="window"/>
+                <path d="M 105,272 L 105,285" stroke-width="1" opacity="0.8"/>
+                
+                <!-- Main house windows with depth and frames -->
+                <rect x="188" y="178" width="32" height="42" class="shadow" opacity="0.3"/>
+                <rect x="190" y="180" width="30" height="40" class="window"/>
+                <line x1="190" y1="200" x2="220" y2="200" stroke-width="1"/>
+                <line x1="205" y1="180" x2="205" y2="220" stroke-width="1"/>
+                <rect x="190" y="180" width="30" height="40" fill="none" stroke-width="2"/>
+                
+                <!-- New middle window -->
+                <rect x="233" y="178" width="32" height="42" class="shadow" opacity="0.3"/>
+                <rect x="235" y="180" width="30" height="40" class="window"/>
+                <!-- Broken glass -->
+                <path d="M 235,180 L 265,220" stroke-width="2.5" opacity="0.8"/>
+                <path d="M 250,180 L 240,200 L 260,210" stroke-width="1.5" opacity="0.6" fill="none"/>
+                <rect x="235" y="180" width="30" height="40" fill="none" stroke-width="2"/>
+                
+                <rect x="278" y="178" width="32" height="42" class="shadow" opacity="0.3"/>
+                <rect x="280" y="180" width="30" height="40" class="window"/>
+                <!-- Severely broken -->
+                <path d="M 280,180 L 310,220" stroke-width="2.5" opacity="0.7"/>
+                <path d="M 310,180 L 280,220" stroke-width="2" opacity="0.6"/>
+                <rect x="280" y="180" width="30" height="40" fill="none" stroke-width="2"/>
+                
+                <rect x="328" y="178" width="32" height="42" class="shadow" opacity="0.3"/>
+                <rect x="330" y="180" width="30" height="40" class="window"/>
+                <!-- Spider web crack -->
+                <path d="M 360,180 L 345,195 L 355,210" stroke-width="1.5" opacity="0.7" fill="none"/>
+                <line x1="330" y1="200" x2="360" y2="200" stroke-width="1"/>
+                <line x1="345" y1="180" x2="345" y2="220" stroke-width="1"/>
+                <rect x="330" y="180" width="30" height="40" fill="none" stroke-width="2"/>
+                
+                <rect x="138" y="238" width="32" height="42" class="shadow" opacity="0.3"/>
+                <rect x="140" y="240" width="30" height="40" class="window"/>
+                <rect x="140" y="240" width="30" height="40" fill="none" stroke-width="2"/>
+                
+                <!-- CENTER lower window 1 -->
+                <rect x="183" y="238" width="32" height="42" class="shadow" opacity="0.3"/>
+                <rect x="185" y="240" width="30" height="40" class="window"/>
+                <line x1="185" y1="260" x2="215" y2="260" stroke-width="1"/>
+                <line x1="200" y1="240" x2="200" y2="280" stroke-width="1"/>
+                <rect x="185" y="240" width="30" height="40" fill="none" stroke-width="2"/>
+                
+                <rect x="328" y="238" width="32" height="42" class="shadow" opacity="0.3"/>
+                <rect x="330" y="240" width="30" height="40" class="window"/>
+                <line x1="330" y1="260" x2="360" y2="260" stroke-width="1"/>
+                <rect x="330" y="240" width="30" height="40" fill="none" stroke-width="2"/>
+                
+                <!-- Additional main house windows -->
+                <rect x="228" y="238" width="32" height="42" class="shadow" opacity="0.3"/>
+                <rect x="230" y="240" width="30" height="40" class="window"/>
+                <line x1="230" y1="260" x2="260" y2="260" stroke-width="1"/>
+                <line x1="245" y1="240" x2="245" y2="280" stroke-width="1"/>
+                <rect x="230" y="240" width="30" height="40" fill="none" stroke-width="2"/>
+                
+                <!-- Another middle lower window -->
+                <rect x="273" y="238" width="32" height="42" class="shadow" opacity="0.3"/>
+                <rect x="275" y="240" width="30" height="40" class="window"/>
+                <!-- Cracked glass -->
+                <path d="M 290,240 L 285,260 L 295,270 L 280,280" stroke-width="1.5" opacity="0.7" fill="none"/>
+                <path d="M 290,240 L 300,255" stroke-width="1" opacity="0.6" fill="none"/>
+                <rect x="275" y="240" width="30" height="40" fill="none" stroke-width="2"/>
+                
+                <!-- CENTER middle row windows (between upper and lower) -->
+                <rect x="193" y="295" width="22" height="32" class="shadow" opacity="0.3"/>
+                <rect x="195" y="297" width="20" height="30" class="window"/>
+                <line x1="195" y1="312" x2="215" y2="312" stroke-width="1"/>
+                <rect x="195" y="297" width="20" height="30" fill="none" stroke-width="2"/>
+                
+                <rect x="288" y="295" width="22" height="32" class="shadow" opacity="0.3"/>
+                <rect x="290" y="297" width="20" height="30" class="window"/>
+                <!-- Small crack -->
+                <path d="M 290,297 L 305,315" stroke-width="1.5" opacity="0.6"/>
+                <rect x="290" y="297" width="20" height="30" fill="none" stroke-width="2"/>
+                
+                <!-- Additional tower windows -->
+                <rect x="383" y="253" width="17" height="22" class="shadow" opacity="0.4"/>
+                <rect x="385" y="255" width="15" height="20" class="window"/>
+                
+                <rect x="403" y="253" width="17" height="22" class="shadow" opacity="0.4"/>
+                <rect x="405" y="255" width="15" height="20" class="window"/>
+                <line x1="405" y1="265" x2="420" y2="265" stroke-width="1"/>
+                
+                <rect x="383" y="288" width="17" height="22" class="shadow" opacity="0.4"/>
+                <rect x="385" y="290" width="15" height="20" class="window"/>
+                <line x1="385" y1="300" x2="400" y2="300" stroke-width="1"/>
+                
+                <rect x="403" y="288" width="17" height="22" class="shadow" opacity="0.4"/>
+                <rect x="405" y="290" width="15" height="20" class="glow-window"/>
+                
+                <!-- Left wing additional window -->
+                <rect x="68" y="298" width="22" height="27" class="shadow" opacity="0.3"/>
+                <rect x="70" y="300" width="20" height="25" class="window"/>
+                <line x1="70" y1="312" x2="90" y2="312" stroke-width="1"/>
+                
+                <!-- Tower windows with depth (recessed) -->
+                <rect x="383" y="148" width="17" height="22" class="shadow" opacity="0.4"/>
+                <polygon points="385,150 400,148 400,170 385,172" class="glow-window"/>
+                
+                <rect x="403" y="148" width="17" height="22" class="shadow" opacity="0.4"/>
+                <polygon points="405,150 420,152 420,170 405,168" class="window"/>
+                
+                <rect x="383" y="183" width="17" height="22" class="shadow" opacity="0.4"/>
+                <rect x="385" y="185" width="15" height="20" class="window"/>
+                <line x1="385" y1="185" x2="400" y2="205" stroke-width="1.5" opacity="0.7"/>
+                
+                <rect x="403" y="183" width="17" height="22" class="shadow" opacity="0.4"/>
+                <rect x="405" y="185" width="15" height="20" class="window"/>
+                
+                <rect x="383" y="218" width="17" height="22" class="shadow" opacity="0.4"/>
+                <rect x="385" y="220" width="15" height="20" class="window"/>
+                
+                <rect x="403" y="218" width="17" height="22" class="shadow" opacity="0.4"/>
+                <polygon points="405,220 420,222 420,240 405,238" class="glow-window"/>
+                
+                <!-- Attic window - circular with frame depth -->
+                <circle cx="251" cy="111" r="17" class="shadow" opacity="0.3"/>
+                <circle cx="250" cy="110" r="15" class="glow-window"/>
+                
+                <!-- Ghost figure in attic window -->
+                <ellipse cx="250" cy="105" rx="4" ry="6" class="ghost"/>
+                <circle cx="248" cy="104" r="1" fill="var(--deep-black)" opacity="0.6"/>
+                <circle cx="252" cy="104" r="1" fill="var(--deep-black)" opacity="0.6"/>
+                <path d="M 250,108 Q 250,110 248,110 Q 250,112 250,114 Q 250,112 252,110 Q 250,110 250,108" class="ghost"/>
+                <path d="M 246,112 Q 248,115 250,117 Q 252,115 254,112" class="ghost" opacity="0.5"/>
+                
+                <path d="M 238,110 L 262,110 M 250,98 L 250,122" stroke-width="1.5" opacity="0.9"/>
+                <circle cx="250" cy="110" r="15" fill="none" stroke-width="2"/>
+                
+                <!-- Overgrown vines with depth -->
+                <path d="M 101,280 Q 111,270 121,260 Q 126,255 131,250 Q 136,245 141,240" stroke-width="3" opacity="0.5" fill="none"/>
+                <path d="M 100,280 Q 110,270 120,260 Q 125,255 130,250 Q 135,245 140,240" stroke-width="2" opacity="0.7" fill="none"/>
+                
+                <path d="M 106,300 Q 116,290 126,280 Q 131,275 136,270" stroke-width="2.5" opacity="0.4" fill="none"/>
+                <path d="M 105,300 Q 115,290 125,280 Q 130,275 135,270" stroke-width="1.5" opacity="0.6" fill="none"/>
+                
+                <path d="M 401,290 Q 391,280 381,270 Q 376,265 371,260" stroke-width="3" opacity="0.5" fill="none"/>
+                <path d="M 400,290 Q 390,280 380,270 Q 375,265 370,260" stroke-width="2" opacity="0.7" fill="none"/>
+                
+                <path d="M 396,310 Q 386,300 376,290 Q 371,285 366,280" stroke-width="2.5" opacity="0.4" fill="none"/>
+                <path d="M 395,310 Q 385,300 375,290 Q 370,285 365,280" stroke-width="1.5" opacity="0.6" fill="none"/>
+                
+                <!-- Layered ground fog -->
+                <ellipse cx="250" cy="355" rx="200" ry="15" opacity="0.3"/>
+                <ellipse cx="150" cy="360" rx="100" ry="10" opacity="0.2"/>
+                <ellipse cx="350" cy="360" rx="100" ry="10" opacity="0.2"/>
+                <ellipse cx="250" cy="358" rx="150" ry="8" opacity="0.15"/>
+            </svg>
+            </svg>
+            </svg>
+        </div>
+        <h1>Hazel Dehn-Shimniok</h1>
+        <div class="subtitle">Horror & Thriller Author</div>
+        <div class="tagline">Stories that trap you in the darkest corners of your mind</div>
+    </section>
+
+    <section id="about">
+        <h2>About</h2>
+        <div class="about-content">
+            <div class="author-photo">
+                <img src="hazel-author-photo.jpg" alt="Hazel Dehn-Shimniok" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="bio">
+                <p>Hazel Dehn-Shimniok is a writer based in Southern Wisconsin. She lives with a lovely gelding, two ornery corgis, a slightly less ornery cat and a very patient husband. She is inspired by the writings of Shirley Jackson, Daphne du Maurier and T. Kingfisher (to name a few!)</p>
+                <p>Her short story, <em>I Know You</em>, was selected as the winning composition in the Buckham Gallery's 2025 anthology, <em>Rain & Rot</em>, juried by Leslie J. Anderson, author of <em>The Unmothers</em>, one of the New York Times Best Horror novels of the year for 2024. <em>I Know You</em> perfectly showcases Hazel's ability to blend atmospheric dread with visceral storytelling.</p>
+                <p>With her upcoming collection of horror stories, to be published by UW Stevens Point's Cornerstone Press, Hazel sets about exploring horror through architecture—the way spaces hold violence, magic, and memory. Each story examines how a space can refuse to release its dead, asking what happens when grief, failure, and trauma literally inhabit the spaces around us, transforming houses into tombs, sanctuaries, and prisons all at once.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="books">
+        <h2>Books</h2>
+        <div class="books-grid">
+            <div class="book-card">
+                <h3>Rain & Rot: An Anthology</h3>
+                <div class="book-meta">Buckham Gallery, Flint MI • 2025</div>
+                <div class="book-description">
+                    <em>I Know You</em> tells the story of a young woman returning to her family's run down cabin in the Appalachian Mountains. Her best friend is coming for a visit, but when she gets there, it doesn't take long to realize that something is desperately, horribly wrong.
+                </div>
+                <a href="https://www.buckhamgallery.org/store/p69/Rain_%26_Rot%3A_An_Anthology.html" target="_blank" style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: var(--accent-red); color: var(--bone-white); text-decoration: none; font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; transition: all 0.3s ease; border: 2px solid var(--accent-red);" onmouseover="this.style.background='transparent'; this.style.color='var(--accent-red)';" onmouseout="this.style.background='var(--accent-red)'; this.style.color='var(--bone-white)';">Purchase Here</a>
+            </div>
+            <div class="book-card">
+                <h3>Horror Collection (Title Coming Soon)</h3>
+                <div class="book-meta">UW Stevens Point Cornerstone Press • February 2028</div>
+                <div class="book-description">
+                    The collection looks at horror through an architectural lens: walls, windows, doors. Structures and spaces that absorb trauma and refuse to let go.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="events">
+        <h2>Events</h2>
+        <div class="contact-content">
+            <p>Check back soon for upcoming readings, signings, and appearances!</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact-content">
+            <p>Interested in reaching out? Whether you're a reader, fellow author, or industry professional, I'd love to hear from you.</p>
+            <a href="mailto:hazeldehnshimniok@gmail.com" class="contact-email">hazeldehnshimniok@gmail.com</a>
+        </div>
+    </section>
