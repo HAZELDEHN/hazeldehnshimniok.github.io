@@ -382,12 +382,22 @@
             padding: 1rem 2rem;
             border: 2px solid var(--accent-red);
             transition: all 0.3s ease;
+            word-break: break-word;
+            text-align: center;
         }
 
         .contact-email:hover {
             background: var(--accent-red);
             color: var(--deep-black);
             box-shadow: 0 0 30px var(--shadow-red);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-email {
+                font-size: 1.2rem;
+                padding: 0.75rem 1rem;
+                letter-spacing: 1px;
+            }
         }
 
         /* Footer */
@@ -441,7 +451,7 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#books">Books</a></li>
-            <li><a href="#events">Events</a></li>
+            <li><a href="#news">News & Events</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -746,7 +756,7 @@
             <div class="bio">
                 <p>Hazel Dehn-Shimniok is a writer based in Southern Wisconsin. She lives with a lovely gelding, two ornery corgis, a slightly less ornery cat and a very patient husband. She is inspired by the writings of Shirley Jackson, Daphne du Maurier and T. Kingfisher (to name a few!)</p>
                 <p>Her short story, <em>I Know You</em>, was selected as the winning composition in the Buckham Gallery's 2025 anthology, <em>Rain & Rot</em>, juried by Leslie J. Anderson, author of <em>The Unmothers</em>, one of the New York Times Best Horror novels of the year for 2024. <em>I Know You</em> perfectly showcases Hazel's ability to blend atmospheric dread with visceral storytelling.</p>
-                <p>With her upcoming collection of horror stories, to be published by UW Stevens Point's Cornerstone Press, Hazel sets about exploring horror through architecture—the way spaces hold violence, magic, and memory. Each story examines how a space can refuse to release its dead, asking what happens when grief, failure, and trauma literally inhabit the spaces around us, transforming houses into tombs, sanctuaries, and prisons all at once.</p>
+                <p>With her upcoming collection of horror stories, to be published by UW-Stevens Point's Cornerstone Press, Hazel sets about exploring horror through architecture—the way spaces hold violence, magic, and memory. Each story examines how a space can refuse to release its dead, asking what happens when grief, failure, and trauma literally inhabit the spaces around us, transforming houses into tombs, sanctuaries, and prisons all at once.</p>
             </div>
         </div>
     </section>
@@ -764,7 +774,7 @@
             </div>
             <div class="book-card">
                 <h3>Horror Collection (Title Coming Soon)</h3>
-                <div class="book-meta">UW Stevens Point Cornerstone Press • February 2028</div>
+                <div class="book-meta">UW-Stevens Point Cornerstone Press • February 2028</div>
                 <div class="book-description">
                     The collection looks at horror through an architectural lens: walls, windows, doors. Structures and spaces that absorb trauma and refuse to let go.
                 </div>
@@ -772,17 +782,40 @@
         </div>
     </section>
 
-    <section id="events">
-        <h2>Events</h2>
-        <div class="contact-content">
-            <p>Check back soon for upcoming readings, signings, and appearances!</p>
+    <section id="news">
+        <h2>News & Events</h2>
+        
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 2px; color: var(--accent-red); margin-bottom: 0.5rem;">In The News</h3>
+            
+            <div style="background: var(--charcoal); border: 2px solid var(--ash-gray); padding: 2rem; margin-bottom: 3rem;">
+                <h4 style="font-size: 1.4rem; margin-bottom: 0.5rem; line-height: 1.4;">
+                    <a href="https://flintdaily.news/2025/10/28/buckham-fine-arts-project-continues-to-creatively-blend-visual-arts-with-writing/" target="_blank" style="color: var(--bone-white); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--accent-red)'" onmouseout="this.style.color='var(--bone-white)'">
+                        Buckham Fine Arts Project Continues to Creatively Blend Visual Arts with Writing
+                    </a>
+                </h4>
+                <p style="font-size: 0.95rem; color: #999; font-style: italic; margin-bottom: 1rem;">Flint Daily News • October 28, 2025</p>
+                <p style="font-size: 1.1rem; line-height: 1.7;">
+                    Coverage of the <em>Rain & Rot</em> anthology, featuring Hazel's winning short story <em>I Know You</em>.
+                </p>
+            </div>
+            
+            <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 2px; color: var(--accent-red); margin-bottom: 1rem;">Upcoming Events</h3>
+            <div class="contact-content">
+                <p>Check back soon for upcoming readings, signings, and appearances!</p>
+            </div>
         </div>
     </section>
+
 
     <section id="contact">
         <h2>Contact</h2>
         <div class="contact-content">
             <p>Interested in reaching out? Whether you're a reader, fellow author, or industry professional, I'd love to hear from you.</p>
-            <a href="mailto:hazeldehnshimniok@gmail.com" class="contact-email">hazeldehnshimniok@gmail.com</a>
-        </div>
-    </section>
+            <a href="/cdn-cgi/l/email-protection#93fbf2e9f6fff7f6fbfde0fbfafefdfafcf8d3f4fef2faffbdf0fcfe" class="contact-email"><span class="__cf_email__" data-cfemail="96fef7ecf3faf2f3fef8e5fefffbf8fff9fdd6f1fbf7fffab8f5f9fb">[email&#160;protected]</span></a>
+            <p style="margin-top: 2rem; font-size: 1.2rem;">
+                Or connect on Instagram at 
+                <a href="https://www.instagram.com/hazeldehnwriter" target="_blank" style="color: var(--accent-red); text-decoration: none; font-weight: 600; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+                    @hazeldehnwriter
+                </a>
+         
